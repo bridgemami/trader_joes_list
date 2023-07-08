@@ -12,7 +12,7 @@ const shoppingListInDB = ref(database, "traderJoesList")
 const inputFieldEl = document.getElementById("input-field")
 const addButtonEl = document.getElementById("add-button")
 const shoppingListEl = document.getElementById("shopping-list")
-
+//add to list and database
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
     
@@ -20,7 +20,7 @@ addButtonEl.addEventListener("click", function() {
     
     clearInputFieldEl()
 })
-
+//add the info to db
 onValue(shoppingListInDB, function(snapshot) {
     if (snapshot.exists()) {
         let itemsArray = Object.entries(snapshot.val())
@@ -54,7 +54,7 @@ function appendItemToShoppingListEl(item) {
     let newEl = document.createElement("li")
     
     newEl.textContent = itemValue
-    
+    //to delete
     newEl.addEventListener("click", function() {
         let exactLocationOfItemInDB = ref(database, `traderJoesList/${itemID}`)
         
